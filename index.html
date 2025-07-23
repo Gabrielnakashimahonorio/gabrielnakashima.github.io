@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gabriel Nakashima - Python Developer</title>
+  <style>
+    /* Reset simples */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #2c3e50, #3498db);
+      color: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      text-align: center;
+      line-height: 1.6;
+      /* Suave transição para cores */
+      transition: background 0.5s ease;
+    }
+    header {
+      margin-bottom: 2rem;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      color: #e0e7ff;
+      text-transform: uppercase;
+      user-select: none;
+    }
+    h2 {
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      margin: 0.5rem 0 2rem;
+      font-weight: 400;
+      color: #a0b1cc;
+      font-style: italic;
+      letter-spacing: 0.05em;
+      user-select: text;
+    }
+    main p {
+      max-width: 650px;
+      font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+      margin: 0 auto 3rem;
+      color: #d0d9eb;
+      line-height: 1.75;
+      font-weight: 500;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    a.btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: linear-gradient(135deg, #25d366, #1ebe58);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 0.85rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow:
+        0 4px 15px rgba(37, 211, 102, 0.6),
+        0 8px 30px rgba(37, 211, 102, 0.3);
+      transition: background 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+      user-select: none;
+      cursor: pointer;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.15));
+    }
+    a.btn:hover,
+    a.btn:focus-visible {
+      background: linear-gradient(135deg, #1ebe58, #0f9c41);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow:
+        0 6px 25px rgba(27, 150, 76, 0.8),
+        0 12px 40px rgba(27, 150, 76, 0.5);
+      outline: none;
+    }
+    a.btn svg {
+      width: 26px;
+      height: 26px;
+      fill: currentColor;
+      flex-shrink: 0;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.3));
+      transition: transform 0.25s ease;
+    }
+    a.btn:hover svg,
+    a.btn:focus-visible svg {
+      transform: scale(1.15);
+    }
+    footer {
+      margin-top: auto;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+      color: #8a9db4;
+      user-select: none;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      font-weight: 500;
+    }
+    /* Responsividade */
+    @media (max-width: 450px) {
+      main p {
+        padding: 0 1rem;
+      }
+      a.btn {
+        font-size: 1rem;
+        padding: 0.7rem 1.8rem;
+        gap: 0.6rem;
+      }
+      a.btn svg {
+        width: 22px;
+        height: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gabriel Nakashima</h1>
+    <h2>gabrielnakashima.github.io</h2>
+  </header>
+  <main>
+    <p>
+      I’m a passionate Python developer specializing in automation, web scraping, and bot development.<br />
+      I help businesses save time and increase productivity with custom Python scripts.
+    </p>
+    <a href="https://wa.me/5511974224992" target="_blank" rel="noopener noreferrer" class="btn" aria-label="Contact Gabriel Nakashima on WhatsApp">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="img" >
+        <path d="M20.52 3.48a11.8 11.8 0 00-16.7 0 11.72 11.72 0 00-3.49 8.41c0 2.08.54 4.07 1.57 5.8L2 22l4.53-1.48a11.7 11.7 0 005.8 1.57 11.73 11.73 0 008.41-3.49 11.8 11.8 0 000-16.7zm-7.62 15.45a9.64 9.64 0 01-5.04-1.4l-.36-.21-3 1 1-3-.23-.36a9.6 9.6 0 1113.44 0 9.64 9.64 0 01-5.03 1.4zm5.49-6.24c-.3-.15-1.75-.87-2.02-.97-.27-.1-.47-.15-.67.15s-.77.97-.95 1.17-.35.22-.65.07a7.53 7.53 0 01-2.2-1.35c-.82-.81-1.36-1.8-1.52-2.1-.15-.28 0-.43.11-.57.12-.12.27-.32.4-.48a.49.49 0 01.07-.08c.08-.06.11-.1.17-.17.05-.07.02-.12 0-.17a1.1 1.1 0 00-.67-.57c-.27-.07-.5-.06-.71-.07s-.66 0-1 .47a4.38 4.38 0 00-1.42 3.3c0 .58.54 1.15.62 1.23a6.84 6.84 0 005.9 3.7 5.78 5.78 0 002.08-.34 3.57 3.57 0 001.66-1.3 3.43 3.43 0 00.24-1.3c0-.15-.02-.25-.3-.4z"/>
+      </svg>
+      Contact Me
+    </a>
+  </main>
+  <footer>
+    &copy; 2025 Gabriel Nakashima
+  </footer>
+</body>
+</html>

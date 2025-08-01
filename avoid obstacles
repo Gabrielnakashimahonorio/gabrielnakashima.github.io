@@ -1,0 +1,95 @@
+import pygame
+import random
+
+pygame.init()
+
+largura = 400
+altura = 600
+tela = pygame.display.set_mode((largura, altura))
+pygame.display.set_caption("Desvie dos obstaculos")
+clock = pygame.time.Clock()
+
+cinza = (40, 40, 40)
+branco = (255, 255, 255)
+vermelho = (255, 0, 0)
+verde = (0, 255, 0)
+azul = (0, 100, 255)
+
+fonte_grande = pygame.font.SysFont(None, 48)
+fonte_pequena = pygame.font.SysFont(None, 30)
+
+def criar_obstaculo():
+    x = random.randint(0, largura - 40)
+    return pygame.Rect(x, -40, 40, 40)
+
+def desenhar_texto(texto, fonte, cor, x, y):
+    imagem = fonte.render(texto, True, cor)
+    tela.blit(imagem, (x, y))
+
+def desenhar_botao(texto, x, y, largura_botao, altura_botao):
+    mouse = pygame.mouse.get_pos()
+    click = pygame.mouse.get_pressed()
+
+    ret = pygame.Rect(x, y, largura_botao, altura_botao)
+    pygame.draw.rect(tela, azul, ret)
+
+    desenhar_texto(texto, fonte_pequena, branco, x + 10, y + 10)
+
+    if ret.collidepoint(mouse) and click[0]:
+        return True
+    return False
+
+def resetar_jogo():
+    return pygame.Rect(180, 500, 40, 40), [], 0, False
+
+jogador, obstaculos, pontuacao, perdeu = resetar_jogo()
+
+rodando = True
+while rodando:
+    tela.fill(cinza)
+
+    for evento in pygame.event.get():
+        if evento.type == pygame.QUIT:
+            rodando = False
+
+    if not perdeu:
+        teclas = pygame.key.get_pressed()
+        if teclas[pygame.K_a] and jogador.left > 0:
+            jogador.x -= 5
+        if teclas[pygame.K_d] and jogador.right < largura:
+            jogador.x += 5
+
+        if random.randint(1, 30) == 1:
+            obstaculos.append(criar_obstaculo())
+
+        novos_obstaculos = []
+        for obstaculo in obstaculos:
+            obstaculo.y += 5
+            if obstaculo.colliderect(jogador):
+                perdeu = True
+            elif obstaculo.y >= altura:
+                pontuacao += 1
+            else:
+                novos_obstaculos.append(obstaculo)
+            pygame.draw.rect(tela, vermelho, obstaculo)
+        obstaculos = novos_obstaculos
+
+        pygame.draw.rect(tela, verde, jogador)
+
+        desenhar_texto(f"Pontuação: {pontuacao}", fonte_pequena, branco, 10, 10)
+
+    else:
+        texto_derrota = fonte_grande.render("Se fudeu!", True, vermelho)
+        x = largura // 2 - texto_derrota.get_width() // 2
+        y = altura // 2 - texto_derrota.get_height() // 2 - 50
+        tela.blit(texto_derrota, (x, y))
+
+        desenhar_texto(f"Pontuação final: {pontuacao}", fonte_pequena, azul, largura // 2 - 100, altura // 2 + 10)
+
+        if desenhar_botao("Jogar Novamente", largura // 2 - 80, altura // 2 + 60, 160, 50):
+            jogador, obstaculos, pontuacao, perdeu = resetar_jogo() 
+
+    pygame.display.flip()
+    clock.tick(60)
+
+pygame.quit()
